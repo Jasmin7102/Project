@@ -249,12 +249,21 @@
 
 import React, {Component} from 'react';
 import {View, Text, SafeAreaView, Button, TouchableOpacity, Alert, StyleSheet } from 'react-native';
+import CounterValue from './CounterValue';
 
 class App extends Component {
+  
   constructor(props){
     super(props);
     this.state = { counter: 0 };
+    console.log("calling the constructor");
   }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("inside getDerivedStateFromProps()");
+    return null;
+  }
+
   onIncrement = () => {
     if (this.state.counter >= 10){
       Alert.alert("Value of counter cannot be incremented");
@@ -284,6 +293,7 @@ class App extends Component {
   }
 
   render(){
+    console.log("calling the render()");
     const { counter } = this.state;
     return(
       <SafeAreaView style={styles.container}>
@@ -291,21 +301,20 @@ class App extends Component {
           <Text style={styles.title}>
             Counter Application
           </Text>
+          <CounterValue counter={this.state.counter}/>
           
-          <Text style={styles.count}>
-            {counter}
-          </Text>
+
           <TouchableOpacity 
-          style={styles.Increment} 
-          onPress={this.onIncrement} 
-          >
-          <Text style= {styles.text}>+</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-          style={styles.Decrement}
-          onPress={this.onDecrement}
+          style={styles.Decrement} 
+          onPress={this.onDecrement} 
           >
           <Text style= {styles.text}>-</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+          style={styles.Increment}
+          onPress={this.onIncrement}
+          >
+          <Text style= {styles.text}>+</Text>
           </TouchableOpacity>
         </View>
       <View>
@@ -317,7 +326,33 @@ class App extends Component {
          </TouchableOpacity>
       </View>
       </SafeAreaView>
-    )
+    );
+  }
+  componentDidMount(){
+    console.log("calling the DidMount()");
+  }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("calling getDerivedStateFromProps()");
+    return null;
+  }
+
+  shouldComponentUpdate() {
+    console.log("calling shouldComponentUpdate()")
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log("calling getSnapshotBeforeUpdate()");
+    return null;
+  }
+
+  componentDidUpdate() {
+    console.log("calling the DidUpdate()");
+  }
+  
+  componentWillUnmount() {
+    console.log("calling the WillUnmount()");
   }
 }
 
@@ -338,16 +373,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'arial',
   },
-  
-  count: {
-    top: 250,
-    padding: 0,
-    fontSize: 90,
-    textAlign: 'center',
-    fontFamily: 'arial',
-  },
 
-  Increment: {
+  Decrement: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     borderRadius: 20,
@@ -366,7 +393,7 @@ const styles = StyleSheet.create({
     fontFamily: 'arial',
   },
 
-  Decrement: {
+  Increment: {
     alignItems: 'center',
     backgroundColor:'#DDDDDD',
     borderRadius: 20,
@@ -385,8 +412,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     top: 400,
-    marginLeft: 10,
-    width: 370,
+    marginLeft: 35,
+    width: 320,
     height: 40,  
   },
 
