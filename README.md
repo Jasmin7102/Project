@@ -20,5 +20,6 @@ Assignment 2 : Styling
 In this project we have made use of different components such as Image, TouchableOpacity, View, Text, Vertical Scrollview and Horizontal Scrollview and added styling to them. 
 
 Output:
+
 <img width="419" alt="Screenshot 2022-10-12 at 5 26 12 PM" src="https://user-images.githubusercontent.com/56545525/195337131-32502cbf-44c9-4ba0-b690-9cb69549424b.png">
 <img width="419" alt="Screenshot 2022-10-12 at 5 26 28 PM" src="https://user-images.githubusercontent.com/56545525/195337209-b1bf8f91-36e0-427a-a6fd-9220497ec023.png">
