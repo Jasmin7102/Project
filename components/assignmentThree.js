@@ -17,57 +17,6 @@ export default class App extends Component {
 
     }
 
-    // onOtpChange = (index) => {
-    //     return value => {
-    //         if (isNaN(Number(value))) {
-    //             return;
-    //         }
-    //         otpArrayCopy = otpArray.concat();
-    //         otpArrayCopy[index] = value;
-    //         setOtpArray(otpArrayCopy);
-
-    //         if (value !== '') {
-    //             if (index === 0) {
-    //                 this.refs.otcurrent.focus();
-    //             } else if (index === 1) {
-    //                 thirdTextInputRef.current.focus();
-    //             } else if (index === 2) {
-    //                 fourthTextInputRef.current.focus();
-    //             } else if (index === 3) {
-    //                 fourthTextInputRef.current.focus();
-    //             }
-    //         }
-    //     };
-    // };
-    // onkeyPress = index => {
-    //     if (value === 'Backspace' && otpArray[index] === '') {
-    //         if (index === 1){
-    //             this.refs.otpDigit1.focus();
-    //         }
-    //         else if (index === 2){
-    //             this.otpDigit2.current.focus();
-    //         }
-    //         else if (index === 3){
-    //             this.otpDigit3.current.focus();
-    //         }
-    //         else if (index === 4){
-    //             this.otpDigit4.current.focus();
-    //         }
-
-    //         }
-    //     if (index > 0) {
-    //         otpArr = otpArray.concat();
-    //         otpArr[index] = '';
-    //         setOtpArray(otpArr);
-    //     }
-    // }
-    onPress1 = () => {
-        this.setState({ otpDigit1: this.state.otpDigit1 })
-
-
-    }
-
-
     render() {
         const { otpDigit1, otpDigit2, otpDigit3, otpDigit4 } = this.state;
 
@@ -91,7 +40,7 @@ export default class App extends Component {
                         ref={"refnum1"}
 
                         onChangeText={(otpDigit1) => {
-                            this.setState({ otpDigit1: this.state.otpDigit1 })
+                            this.setState({ otpDigit1: otpDigit1 });
                             if (otpDigit1 != "") {
                                 this.refs.refnum2.focus()
                             }
@@ -108,7 +57,7 @@ export default class App extends Component {
                         maxLength={1}
                         ref={"refnum2"}
                         onChangeText={(otpDigit2) => {
-                            this.setState({ otpDigit2: this.state.otpDigit2 })
+                            this.setState({ otpDigit2: otpDigit2 });
                             if (otpDigit2 != "") {
                                 this.refs.refnum3.focus()
                             }
@@ -127,7 +76,7 @@ export default class App extends Component {
                         maxLength={1}
                         ref={"refnum3"}
                         onChangeText={(otpDigit3) => {
-                            this.setState({ otpDigit3: this.state.otpDigit3 })
+                            this.setState({ otpDigit3: otpDigit3 });
                             if (otpDigit3 != "") {
                                 this.refs.refnum4.focus()
                             }
@@ -147,7 +96,7 @@ export default class App extends Component {
                         maxLength={1}
                         ref={"refnum4"}
                         onChangeText={(otpDigit4) => {
-                            this.setState({ otpDigit4: this.state.otpDigit4 })
+                            this.setState({ otpDigit4: otpDigit4 });
 
                         }}
                         onKeyPress={({ nativeEvent }) => {

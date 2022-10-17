@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, Image, Button, TouchableOpacity, Alert, StyleSheet, ScrollView } from 'react-native';
 
-export default class App extends Component {
+export default class AssignmentTwo extends Component {
     onPress = () => {
         alert("Please select method of payment");
      }
