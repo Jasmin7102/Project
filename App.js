@@ -57,7 +57,7 @@ export default class App extends Component {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Assignment 1" component={AssignmentOne} />
+          <Stack.Screen name="Assignment 1" component={AssignmentOne} options={{ headerTitleAlign: "center" }}/>
           <Stack.Screen name="Assignment 2" component={AssignmenTwo} />
           <Stack.Screen name="Assignment 3" component={AssignmentThree} />
           <Stack.Screen name="Assignment 4" component={AssignmentFour} />
@@ -68,8 +68,6 @@ export default class App extends Component {
   }
   
 }
-
-
 
 const styles = StyleSheet.create ({
   container: {

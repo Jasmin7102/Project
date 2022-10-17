@@ -50,9 +50,9 @@ export default class AssignmentOne extends Component {
     return(
       <SafeAreaView style={styles.container}>
         <View>
-          <Text style={styles.title}>
+          {/* <Text style={styles.title}>
             Counter Application
-          </Text>
+          </Text> */}
           <CounterValue counter={this.state.counter}/>
           
 
@@ -112,12 +112,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 0,
     justifyContent: 'center',
-    
-
   },
   
   title: {
-    top: 20,
+    top: 10,
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
@@ -130,7 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     position: 'absolute',
-    top: 400,
+    top:200,
     marginLeft: 40,
     width: 100,
     height: 40,
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     position: 'absolute',
-    top: 400,
+    top: 200,
     marginLeft: 250,
     width: 100,
     height: 40,
@@ -161,9 +159,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     position: 'absolute',
-    top: 400,
+    top: 220,
     marginLeft: 35,
-    width: 320,
+    width: "80%",
     height: 40,  
   },
 
