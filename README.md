@@ -11,5 +11,6 @@ Assignment 1 : Counter Application
     AppRegistry.registerComponent(appName, () => App);
 
 Output:
+
 <img width="437" alt="Screenshot 2022-10-08 at 7 25 01 PM" src="https://user-images.githubusercontent.com/56545525/195336288-740d53a3-13ed-448a-a451-11ad00bc9c96.png">
 
