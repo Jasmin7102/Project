@@ -7,7 +7,7 @@ const DATA = [
     {
         image: { uri: "https://diariolibre.blob.core.windows.net.optimalcdn.com/images/binrepository/actor-de-365-michele-morrone_15949464_20210310185052.jpg" },
         brand: "Tommy Hilfiger",
-        info: "Men's Morrison Stripe Polo, Limelight Combo",
+        info: "Men's Morrison Polo, Limelight Combo",
         price: 'USD 23',
         
     },
