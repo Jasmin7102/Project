@@ -288,11 +288,11 @@ const style = StyleSheet.create({
         flexWrap: 'wrap',
     },
     product: {
-        height: 320,
+        height: 390,
         width: "49%"
     },
     productImg: {
-        height: "70%",
+        height: "75%",
         width: "95%",
         marginBottom: 2,
     },
@@ -338,7 +338,7 @@ const style = StyleSheet.create({
         height: 30,
         position: 'absolute',
         right: 20,
-        bottom: 192,
+        bottom: 260,
     },
     productScroll: {
         flex: 1,
