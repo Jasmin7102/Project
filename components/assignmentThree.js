@@ -13,8 +13,6 @@ export default class App extends Component {
                 otpDigit4: '',
             }
         }
-
-
     }
 
     render() {
@@ -276,7 +274,7 @@ const styles = StyleSheet.create({
 
     },
     space: {
-        height: 195,
+        height: 150,
     },
     continueTxt: {
         color: 'rgb(166,199,186)',

@@ -1,64 +1,24 @@
-import {Component} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AssignmentOne from './components/assignmentOne';
-import AssignmenTwo from './components/assignmentTwo';
+import AssignmentTwo from './components/assignmentTwo';
 import AssignmentThree from './components/assignmentThree';
 import AssignmentFour from './components/AssignmentFour';
 import PracticeAssignment from './components/practiceAssignment';
-
-class HomeScreen extends Component {
-  render(){
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcomeTxt}>Welcome Home</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Assignment 1')}
-        >
-          <Text style={styles.text}>Assignment 1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Assignment 2')}
-        >
-          <Text style={styles.text}>Assignment 2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Assignment 3')}
-        >
-          <Text style={styles.text}>Assignment 3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Assignment 4')}
-        >
-          <Text style={styles.text}>Assignment 4</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Practice Assignment')}
-        >
-          <Text style={styles.text}>Practice Assignment </Text>
-        </TouchableOpacity>
-  
-      </View>
-    );
-  }
-}
+import TabNavigation from './tabNavigation';
 
 const Stack = createNativeStackNavigator();
 
 export default class App extends Component {
-  render(){
+  render() {
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Assignment 1" component={AssignmentOne} options={{ headerTitleAlign: "center" }}/>
-          <Stack.Screen name="Assignment 2" component={AssignmenTwo} />
+          <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>
+          <Stack.Screen name="Assignment 1" component={AssignmentOne} options={{ headerTitleAlign: "center" }} />
+          <Stack.Screen name="Assignment 2" component={AssignmentTwo} />
           <Stack.Screen name="Assignment 3" component={AssignmentThree} />
           <Stack.Screen name="Assignment 4" component={AssignmentFour} />
           <Stack.Screen name="Practice Assignment" component={PracticeAssignment} />
@@ -66,13 +26,12 @@ export default class App extends Component {
       </NavigationContainer>
     );
   }
-  
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    alignItems: 'center', 
+    flex: 1,
+    alignItems: 'center',
     paddingHorizontal: 20,
     backgroundColor: "black",
   },
@@ -95,7 +54,7 @@ const styles = StyleSheet.create ({
   text: {
     textAlign: 'center',
     fontSize: 15,
-    fontFamily:'arial',
+    fontFamily: 'arial',
     color: 'white',
     fontWeight: 'bold',
   }
