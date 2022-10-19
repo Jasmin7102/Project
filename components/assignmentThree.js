@@ -20,13 +20,7 @@ export default class App extends Component {
 
         return (
             <View style={styles.Component}>
-                <SafeAreaView style={styles.SafeAreaComponent}>
-                    <View style={styles.header}>
-                        <Text style={styles.loginText}>
-                            Log into Saavn
-                        </Text>
-                    </View>
-                </SafeAreaView>
+                
                 <View>
                     <Text style={styles.codeText}>Enter your code</Text>
                 </View>
@@ -274,7 +268,7 @@ const styles = StyleSheet.create({
 
     },
     space: {
-        height: 150,
+        height: 120,
     },
     continueTxt: {
         color: 'rgb(166,199,186)',

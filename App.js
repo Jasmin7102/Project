@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { Image,StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AssignmentOne from './components/assignmentOne';
@@ -18,10 +18,23 @@ export default class App extends Component {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>
           <Stack.Screen name="Assignment 1" component={AssignmentOne} options={{ headerTitleAlign: "center" }} />
-          <Stack.Screen name="Assignment 2" component={AssignmentTwo} />
-          <Stack.Screen name="Assignment 3" component={AssignmentThree} />
-          <Stack.Screen name="Assignment 4" component={AssignmentFour} />
-          <Stack.Screen name="Practice Assignment" component={PracticeAssignment} />
+          <Stack.Screen name="Assignment 2" component={AssignmentTwo} options={{
+                    headerRight: () => (
+                        <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
+                    ),
+                }} />
+          <Stack.Screen name="Assignment 3" component={AssignmentThree} options={{
+            headerTitle: "Log Into Saavn",
+            headerTintColor: "#ffff",
+            headerBackground: 'rgb(110,186,121)',
+
+          }}/>
+          <Stack.Screen name="Assignment 4" component={AssignmentFour} options={{
+            headerTitle: "Color Code Viewer"
+            }}/>
+          <Stack.Screen name="Practice Assignment" component={PracticeAssignment} options={{
+            headerTitle: "Myntra"
+            }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -57,5 +70,10 @@ const styles = StyleSheet.create({
     fontFamily: 'arial',
     color: 'white',
     fontWeight: 'bold',
-  }
+  },
+  logo: {
+    height: 20,
+    width: 20,
+    margin: 5,
+}
 })

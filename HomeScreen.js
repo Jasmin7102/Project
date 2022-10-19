@@ -28,13 +28,13 @@ export default class HomeScreen extends Component {
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Assignment 4')}
         >
-          <Text style={styles.text}>Assignment4</Text>
+          <Text style={styles.text}>Assignment 4</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Practice Assignment')}
         >
-          <Text style={styles.text}>Assignment4</Text>
+          <Text style={styles.text}>Practice Assignment</Text>
         </TouchableOpacity>
       </View>
     );}}
