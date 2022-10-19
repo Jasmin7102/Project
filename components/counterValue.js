@@ -53,10 +53,11 @@ export default CounterValue;
 
 const styles = StyleSheet.create({
     count: {
-        top: 250,
-        padding: 0,
-        fontSize: 90,
+        top: 155,
+        fontSize: 100,
+        fontWeight: '100',
         textAlign: 'center',
         fontFamily: 'arial',
+        color: 'black',
       }
 })
