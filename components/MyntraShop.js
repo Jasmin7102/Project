@@ -9,7 +9,7 @@ const DATA = [
         brand: "Tommy Hilfiger",
         info: "Men's Morrison Polo, Limelight Combo",
         price: 'USD 23',
-        
+
     },
     {
         image: { uri: "https://cdn.shopify.com/s/files/1/1414/2498/products/CS_ClassicWhite_06_1080x.jpg?v=1614938700" },
@@ -41,6 +41,7 @@ class HomeScreen extends Component {
     onClick = () => {
         this.setState({ check: !this.state.check })
     }
+    
     render() {
         return (
             <SafeAreaView style={style.container}>
@@ -48,18 +49,30 @@ class HomeScreen extends Component {
                 <View style={style.firstRow}>
                     <Text style={style.itemsTxt}>195 items</Text>
                     <View style={style.sort}>
-                        <Image
-                            style={style.sortImg}
-                            source={{ uri: "https://img.icons8.com/pastel-glyph/344/sorting-arrows.png" }}
-                        />
-                        <Text style={style.sortTxt}>SORT</Text>
+                        <TouchableOpacity
+                            style={style.customize}
+                            onPress={this.onPress}
+                        >
+                            <Image
+                                style={style.sortImg}
+                                source={{ uri: "https://img.icons8.com/pastel-glyph/344/sorting-arrows.png" }}
+                            />
+                            <Text style={style.sortTxt}>SORT</Text>
+                        </TouchableOpacity>
 
                         <View style={style.verticalLine} />
-                        <Image
-                            style={style.filterImg}
-                            source={{ uri: "https://img.icons8.com/android/344/filter.png" }}
-                        />
-                        <Text style={style.filterTxt}>FILTER</Text>
+
+                        <TouchableOpacity
+                            style={style.customize}
+                            onPress={this.onPress}
+                        >
+                            <Image
+                                style={style.filterImg}
+                                source={{ uri: "https://img.icons8.com/android/344/filter.png" }}
+                            />
+                            <Text style={style.filterTxt}>FILTER</Text>
+                        </TouchableOpacity>
+
                     </View>
 
                 </View>
@@ -170,6 +183,17 @@ class Account extends Component {
 const Tab = createBottomTabNavigator();
 
 export default class MyntraShop extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            home: false
+        };
+    }
+
+    onClickHome = () => {
+        this.setState({ home: !this.state.home })
+    }
+
     render() {
         return (
             <NavigationContainer>
@@ -177,7 +201,16 @@ export default class MyntraShop extends Component {
                     <Tab.Screen name="Home" component={HomeScreen} options={{
                         tabBarLabel: 'Home',
                         tabBarIcon: ({ color, size }) => (
-                            <Image style={style.home} source={{ uri: "https://cdn-icons-png.flaticon.com/512/709/709873.png" }} />
+                            <TouchableOpacity onPress={this.onClickHome}>
+
+                                {this.state.home == 0 ?
+                                    <Image style={style.home} resizeMode={'contain'} source={{ uri: "https://cdn-icons-png.flaticon.com/512/709/709873.png" }} /> :
+
+                                    <Image style={style.home} resizeMode={'contain'} source={{ uri: "https://cdn-icons-png.flaticon.com/128/20/20176.png" }} />
+                                    }
+
+                            </TouchableOpacity>
+                            // <Image style={style.home} source={{ uri: "https://cdn-icons-png.flaticon.com/512/709/709873.png" }} />
                         )
                     }} />
                     <Tab.Screen name="Categories" component={Category} options={{
@@ -227,6 +260,10 @@ const style = StyleSheet.create({
     itemsTxt: {
         color: 'black',
         fontSize: 12,
+    },
+    customize: {
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     sort: {
         flexDirection: 'row',
