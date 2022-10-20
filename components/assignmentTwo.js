@@ -8,17 +8,7 @@ export default class AssignmentTwo extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <View style={styles.header}>
-                    <Image
-                        style={styles.logo}
-                        source={{ uri: "https://img.icons8.com/external-basicons-line-edtgraphics/344/external-Left-arrows-basicons-line-edtgraphics.png" }}
-                    />
-                    <Text style={styles.productDetails}>Product Details </Text>
-                    <Image
-                        style={styles.logo}
-                        source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }}
-                    />
-                </View>
+                
                 <ScrollView>
                     <View style={styles.main}>
                         <Image
@@ -91,15 +81,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 15,
-        marginVertical: 10,
+        paddingVertical: 10,
     },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: "rgb(255,255,255)",
-        marginHorizontal: 15,
-        marginBottom: 10,
-    },
+    
     logo: {
         height: 20,
         width: 20,

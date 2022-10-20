@@ -16,11 +16,7 @@ export default class AssignmentFour extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerText}>
-                Color Code Viewer
-                </Text>
-            </View>
+            
             <View style={color(this.state.hexvalue).colorBoxxx}></View>
             <View>
             <TextInput
@@ -62,24 +58,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         alignItems: 'center',
     },
-    header: {
-        
-        backgroundColor: "rgb(255,255,255)",
-        marginHorizontal: 15,
-        marginBottom: 10,
-    },
-    headerText: {
-        fontSize: 18,
-        textAlign: 'center',
-        
-    },
     textInput: {
         marginVertical: 20,
-    }
-    ,
-    
+    },
     inputColor: {
-
         fontSize: 18,
         margin: 20,
     },
@@ -89,13 +71,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(112,116,129)',
         border: 0,
         borderRadius: 10,
-        
-
     },
     submitTxt: {
         color: 'white',
         padding: 10,
         textAlign: 'center',
     }
-
 })
