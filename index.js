@@ -3,12 +3,6 @@
  */
 
 import {AppRegistry} from 'react-native';
-<<<<<<< HEAD
-import App from './App';
-import {name as appName} from './app.json';
-
-AppRegistry.registerComponent(appName, () => App);
-=======
 //import App from './App';
 //import counterApp from './counterApp';
 //import Screen from './Screen';
@@ -22,4 +16,3 @@ import RNComponents_Three from './components/RNComponents_Three';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => RNComponents_Three);
->>>>>>> 0314e81cf0c3dbc200d8e67188fa01a9b1bc4b3c
