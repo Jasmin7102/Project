@@ -14,6 +14,8 @@ import {AppRegistry, SectionList} from 'react-native';
 //import drawerNavigation from './drawerNavigation';
 
 import sliderComp from './components/AssignmenttFiveSlider';
+
+//import AssignmentFiveWebview from './components/AssignmentFiveWebview';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => sliderComp);
