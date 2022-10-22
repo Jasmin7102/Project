@@ -17,7 +17,7 @@ export default class App extends Component {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>
-          <Stack.Screen name="Assignment 1" component={AssignmentOne} options={{ headerTitleAlign: "center" }} />
+          <Stack.Screen name="Assignment 1" component={AssignmentOne} />
           <Stack.Screen name="Assignment 2" component={AssignmentTwo} options={{
                     headerRight: () => (
                         <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
@@ -27,13 +27,16 @@ export default class App extends Component {
             headerTitle: "Log Into Saavn",
             headerTintColor: "#ffff",
             headerBackground: 'rgb(110,186,121)',
+            headerTitleAlign: "center",
 
           }}/>
           <Stack.Screen name="Assignment 4" component={AssignmentFour} options={{
-            headerTitle: "Color Code Viewer"
+            headerTitle: "Color Code Viewer",
+            headerTitleAlign: "center",
             }}/>
           <Stack.Screen name="Practice Assignment" component={PracticeAssignment} options={{
-            headerTitle: "Myntra"
+            headerTitle: "Myntra",
+            headerTitleAlign: "center",
             }}/>
         </Stack.Navigator>
       </NavigationContainer>

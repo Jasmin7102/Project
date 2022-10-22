@@ -64,17 +64,23 @@ const styles = StyleSheet.create({
     inputColor: {
         fontSize: 18,
         margin: 20,
+        borderWidth: 1,
+        borderRadius: 4,
+        borderColor: '#dddddd',
+        padding: 10,
     },
     submit: {
-        height: "20%",
+        height: "28%",
         width: "80%",
         backgroundColor: 'rgb(112,116,129)',
+        padding: 5,
         border: 0,
         borderRadius: 10,
     },
     submitTxt: {
         color: 'white',
         padding: 10,
+        fontSize: 16,
         textAlign: 'center',
     }
 })

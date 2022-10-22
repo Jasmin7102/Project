@@ -15,18 +15,21 @@ export default class tabNavigation extends Component {
     render() {
         return (
             <Tab.Navigator>
-                <Tab.Screen name="Home" component={HomeScreen} />
+                <Tab.Screen name="Home" component={HomeScreen} options={{headerTitleAlign: "center",}}/>
                 <Tab.Screen name="Assignment 1" component={AssignmentOne} options={{
                     headerTitle: "Counter Application",
+                    headerTitleAlign: "center",
                 }}/>
                 <Tab.Screen name="Assignment 2" component={AssignmenTwo} options={{
                     headerTitle: "Product Details",
+                    headerTitleAlign: "center",
                     headerRight: () => (
                         <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
                     ),
                 }} />
                 <Tab.Screen name="Assignment 3" component={AssignmentThree} options={{
                     headerTitle: "Log Into Saavn",
+                    headerTitleAlign: "center",
                     headerTintColor: "#ffff",
                     headerStyle: {
                         backgroundColor: 'rgb(110,186,121)'
