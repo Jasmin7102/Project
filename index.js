@@ -13,7 +13,9 @@ import {AppRegistry, SectionList} from 'react-native';
 //import tabNavigation from './tabNavigation';
 //import drawerNavigation from './drawerNavigation';
 
-import SectionListFile from './components/SectionListFile';
+import sliderComp from './components/AssignmenttFiveSlider';
+
+//import SectionLists from './components/Sectionlist';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => SectionListFile);
+AppRegistry.registerComponent(appName, () => sliderComp);

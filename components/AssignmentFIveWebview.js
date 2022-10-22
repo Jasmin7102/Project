@@ -3,7 +3,7 @@ import { StyleSheet, ActivityIndicator, Text, SafeAreaView ,View} from 'react-na
 import { WebView } from 'react-native-webview';
 
 
-export default class MyWebComponent extends Component {
+export default class AssignmentFiveWebview extends Component {
     constructor(props){
         super(props)
         {
@@ -14,17 +14,15 @@ export default class MyWebComponent extends Component {
     }
     render() {
         return (
-            <SafeAreaView style={{flex:1}}>
-            <Text>Let's see how webview works</Text>
+            <SafeAreaView style={style.container}>
+            <Text style={style.mainTxt}>Let's see how webview works</Text>
                 {this.state.loading &&
-                <View style={{flex:1,justifyContent:'center'}}>
+                <View style={style.webView}>
                 <ActivityIndicator size="large" color="#00ff00" hidesWhenStopped={true} />
                 </View>
                   }
                 
-                <WebView source={{ uri: 'https://reactnative.dev' }} 
-                    // onLoadProgress
-
+                <WebView source={{ uri: 'https://www.linkedin.com' }} 
                 onLoadStart={() => this.setState({loading: false})}
                 />
             </SafeAreaView>
@@ -32,3 +30,19 @@ export default class MyWebComponent extends Component {
         );
     }
 }
+
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    mainTxt: {
+        textAlign: 'center',
+        fontSize: 14,
+        padding: 20,
+        fontWeight: 'bold',
+    },
+    webView: {
+        flex:1,
+        justifyContent:'center',
+    }
+});
