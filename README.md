@@ -33,7 +33,7 @@ Assignment 5: Practice Assignment (Myntra Screen)
 
 <img width="200" alt="Screenshot 2022-10-18 at 11 36 10 AM" src="https://user-images.githubusercontent.com/56545525/196348714-281344d6-b444-412a-9b6e-f35ce5064244.png">
 
-After Implementing Stack & Tab Navigation, the screeens may look somewhat like:
+After Implementing Tab Navigation and linking it with stack navigation, the screeens may look somewhat like:
 
 Android Screen:
 
@@ -59,3 +59,14 @@ IOS Screen:
 <img width="200" alt="Screenshot 2022-10-23 at 2 00 21 AM" src="https://user-images.githubusercontent.com/56545525/197361875-557a198b-3596-44e4-8c34-6b65d901c783.png">
 <img width="200" alt="Screenshot 2022-10-23 at 2 24 42 AM" src="https://user-images.githubusercontent.com/56545525/197362008-9e4b98a6-58c9-44e5-851a-d47d28d3ecad.png">
 <img width="200" alt="Screenshot 2022-10-23 at 2 24 29 AM" src="https://user-images.githubusercontent.com/56545525/197362015-af5b084b-d9de-48f7-b7c4-ae3fd7579f72.png">
+
+Implementation of drawer navigation is also done, please refer to file drawerNavigation.js for tthe same.
+
+In case one faces any problem during implementation, follow the steps mentioned below:
+1. Delete pods folder and podfile.lock
+2. npm uninstall react-native-webview
+3. npm i react-native-webview
+4. cd ios
+5. pod install
+6. (npx) react-native run-ios
+7. Reset cache
