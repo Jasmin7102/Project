@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     textValue: {
         margin: 20,
         textAlign: 'center',
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 80,
+        fontWeight: '300',
     }
 })
 
