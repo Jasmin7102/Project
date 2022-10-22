@@ -9,13 +9,13 @@ Assignment : ReactNative Components -2
 
 > AssignmentFiveWebview.js conttains code for implementing webview which is imported from react-native-webview.
 
+> AssignmentFiveWebview.js needs to imported inside index.js & registered as AppComponent for running the app:
+   import AssignmentFiveWebview from './Components/AssignmentFiveWebview';
+   AppRegistry.registerComponent(appName, () => AssignmentFiveWebview);
+    
 To install reeact-native-webview, run the following commands:
 > npm i react-native-webview
 > np pod-install ios
-
->  AssignmentFiveWebview.js needs to imported inside index.js & registered as AppComponent for running the app:
-    import AssignmentFiveWebview from './Components/AssignmentFiveWebview';
-    AppRegistry.registerComponent(appName, () => AssignmentFiveWebview);
 
 Output:
 
@@ -27,13 +27,13 @@ Output:
 
 > AssignmentFiveSlider.js conttains code for implementing slider which is imported from @react-native-community/slider.
 
+> AssignmentFiveSlider.js needs to imported inside index.js & registered as AppComponent for running the app:
+   import AssignmentFiveSlider from './Components/AssignmentFiveSlider';
+   AppRegistry.registerComponent(appName, () => AssignmentFiveSlider);
+   
 To install reeact-native-slider, run the following commands:
 > npm i @react-native-community/slider
 > np pod-install ios
-
->  AssignmentFiveSlider.js needs to imported inside index.js & registered as AppComponent for running the app:
-    import AssignmentFiveSlider from './Components/AssignmentFiveSlider';
-    AppRegistry.registerComponent(appName, () => AssignmentFiveSlider);
 
 Output:
 
