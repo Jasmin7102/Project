@@ -57,3 +57,5 @@ IOS Screen:
 <img width="200" alt="Screenshot 2022-10-23 at 2 00 16 AM" src="https://user-images.githubusercontent.com/56545525/197361873-4c331ac3-5660-4e4f-a3b5-ec4820afe0d9.png">
 <img width="200" alt="Screenshot 2022-10-23 at 2 00 09 AM" src="https://user-images.githubusercontent.com/56545525/197361874-1961314b-f2da-4d44-9d40-6b532f03ee33.png">
 <img width="200" alt="Screenshot 2022-10-23 at 2 00 21 AM" src="https://user-images.githubusercontent.com/56545525/197361875-557a198b-3596-44e4-8c34-6b65d901c783.png">
+<img width="200" alt="Screenshot 2022-10-23 at 2 24 42 AM" src="https://user-images.githubusercontent.com/56545525/197362008-9e4b98a6-58c9-44e5-851a-d47d28d3ecad.png">
+<img width="200" alt="Screenshot 2022-10-23 at 2 24 29 AM" src="https://user-images.githubusercontent.com/56545525/197362015-af5b084b-d9de-48f7-b7c4-ae3fd7579f72.png">
