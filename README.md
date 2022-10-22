@@ -1,10 +1,11 @@
-<<<<<<< HEAD
+
 # Project
 This repo contains code build in ReactNative framework.
 
 Assignment : ReactNative Components -2
 
 1. Webview & Activity Indicator
+
 > For the following project, please refer to the file AssignmentFiveWebview.js and index.js.
 
 > AssignmentFiveWebview.js conttains code for implementing webview which is imported from react-native-webview.
@@ -24,6 +25,7 @@ Output:
 
 
 2. Switch & Slider
+
 > For the following project, please refer to the file AssignmentFiveSlider.js and index.js.
 
 > AssignmentFiveSlider.js conttains code for implementing slider which is imported from @react-native-community/slider.
