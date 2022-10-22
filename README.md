@@ -15,7 +15,8 @@ Assignment : ReactNative Components -2
     
 To install reeact-native-webview, run the following commands:
 > npm i react-native-webview
-> np pod-install ios
+
+> npx pod-install ios
 
 Output:
 
@@ -33,7 +34,8 @@ Output:
    
 To install reeact-native-slider, run the following commands:
 > npm i @react-native-community/slider
-> np pod-install ios
+
+> npx pod-install ios
 
 Output:
 
