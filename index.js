@@ -9,13 +9,11 @@ import {AppRegistry, SectionList} from 'react-native';
 //import OtpScreen from './OtpScreen';
 //import colorView from './colorView'
 //import navigationIndex from './navigationIndex';
-//import RNComponents_Three from './components/RNComponents_Three';
+//import AssignmentFiveWebview from './components/AssignmentFIveWebview';
 //import tabNavigation from './tabNavigation';
 //import drawerNavigation from './drawerNavigation';
 
 import sliderComp from './components/AssignmenttFiveSlider';
-
-//import SectionLists from './components/Sectionlist';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => sliderComp);
