@@ -13,11 +13,21 @@ Result:
 > Android Screen
 <img width="200" alt="Screenshot 2022-10-17 at 5 56 57 PM" src="https://user-images.githubusercontent.com/56545525/196225761-10d3990e-978a-4c52-b861-cc5dc6c4e405.png">
 
-Assignment 1: Counter App
+Assignment 1: Counter Application
+> For the following project, please refer to the file AssignmentOne.js and CounterValue.js.
+
+> AssignmentOne.js contains the parent component and CounteValue.js is the child component.
+
+> AssignmentOne.js needs to imported inside index.js & registered as AppComponent for running the app:
+    import AssignmentOne from './components/AssignmentOne.js';
+    AppRegistry.registerComponent(appName, () => AssignmentOne);
 
 <img width="200" alt="Screenshot 2022-10-18 at 11 35 46 AM" src="https://user-images.githubusercontent.com/56545525/196348671-23b73a59-70ad-40b1-94f6-817f2b8db78f.png">
 
-Assignment 2: Movie Screen
+Assignment 2 : Styling 
+> For the following project, please refer to the file AssignmentTwo.js
+In this project we have made use of different components such as Image, TouchableOpacity, View, Text, Vertical Scrollview and Horizontal Scrollview and added styling to them. 
+
 
 <img width="200" alt="Screenshot 2022-10-18 at 11 35 57 AM" src="https://user-images.githubusercontent.com/56545525/196348690-243d9eba-d1eb-4e61-ab45-62b6f588afcf.png">
 
@@ -44,6 +54,30 @@ IOS Screen:
 
 <img width="200" alt="Screenshot 2022-10-23 at 2 00 28 AM" src="https://user-images.githubusercontent.com/56545525/197361805-26cedc1f-6f49-47c2-a3ad-0569e3bdea26.png">
 
+In the above screenshots, it can be seen that both stack and tab Navigation have beeen linked which can be done as:
+
+> App.js (Stack Navigation)
+Function App() {
+return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>        //Here TabNavigation is a component that is imported from TabNavigation.js file and contains code to implement tab navigation.
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+}
+
+>TabNavigation.js (Tab Navigation)
+
+Function TabNavigation() {
+return (
+            <Tab.Navigator>
+                <Tab.Screen name="Home" component={HomeScreen} />
+            </Tab.Navigator>
+  );
+}
+
+
 On using options, we can update changes to header:
 
 Android Screen:
@@ -60,9 +94,11 @@ IOS Screen:
 <img width="200" alt="Screenshot 2022-10-23 at 2 24 42 AM" src="https://user-images.githubusercontent.com/56545525/197362008-9e4b98a6-58c9-44e5-851a-d47d28d3ecad.png">
 <img width="200" alt="Screenshot 2022-10-23 at 2 24 29 AM" src="https://user-images.githubusercontent.com/56545525/197362015-af5b084b-d9de-48f7-b7c4-ae3fd7579f72.png">
 
-Implementation of drawer navigation is also done, please refer to file drawerNavigation.js for tthe same.
+Implementation of drawer navigation is also done, please refer to file drawerNavigation.js for the same
 
-In case one faces any problem during implementation, follow the steps mentioned below:
+<img width="200" alt="Screenshot 2022-10-20 at 1 41 22 AM" src="https://user-images.githubusercontent.com/56545525/196794203-f87b6770-a3dd-4a49-8860-b4163d63e45c.png">
+
+On Implementing Drawer Navigation, one may face several problems. In that case, try the following steps:
 1. Delete pods folder and podfile.lock
 2. npm uninstall react-native-webview
 3. npm i react-native-webview
