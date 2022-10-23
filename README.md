@@ -14,20 +14,10 @@ Result:
 <img width="200" alt="Screenshot 2022-10-17 at 5 56 57 PM" src="https://user-images.githubusercontent.com/56545525/196225761-10d3990e-978a-4c52-b861-cc5dc6c4e405.png">
 
 Assignment 1: Counter Application
-> For the following project, please refer to the file AssignmentOne.js and CounterValue.js.
-
-> AssignmentOne.js contains the parent component and CounteValue.js is the child component.
-
-> AssignmentOne.js needs to imported inside index.js & registered as AppComponent for running the app:
-    import AssignmentOne from './components/AssignmentOne.js';
-    AppRegistry.registerComponent(appName, () => AssignmentOne);
 
 <img width="200" alt="Screenshot 2022-10-18 at 11 35 46 AM" src="https://user-images.githubusercontent.com/56545525/196348671-23b73a59-70ad-40b1-94f6-817f2b8db78f.png">
 
-Assignment 2 : Styling 
-> For the following project, please refer to the file AssignmentTwo.js
-In this project we have made use of different components such as Image, TouchableOpacity, View, Text, Vertical Scrollview and Horizontal Scrollview and added styling to them. 
-
+Assignment 2 : Movie Screen 
 
 <img width="200" alt="Screenshot 2022-10-18 at 11 35 57 AM" src="https://user-images.githubusercontent.com/56545525/196348690-243d9eba-d1eb-4e61-ab45-62b6f588afcf.png">
 
@@ -43,12 +33,11 @@ Assignment 5: Practice Assignment (Myntra Screen)
 
 <img width="200" alt="Screenshot 2022-10-18 at 11 36 10 AM" src="https://user-images.githubusercontent.com/56545525/196348714-281344d6-b444-412a-9b6e-f35ce5064244.png">
 
-After Implementing Tab Navigation and linking it with stack navigation, the screeens may look somewhat like:
+After Implementing Tab Navigation and linking it with stack navigation, the screens may look somewhat like:
 
 Android Screen:
 
 <img width="200" alt="Screenshot 2022-10-23 at 2 08 52 AM" src="https://user-images.githubusercontent.com/56545525/197361964-5cd81b29-2836-48d3-a8db-5e2c6a999a31.png">
-
 
 IOS Screen:
 
@@ -57,6 +46,8 @@ IOS Screen:
 In the above screenshots, it can be seen that both stack and tab Navigation have beeen linked which can be done as:
 
 > App.js (Stack Navigation)
+
+```
 Function App() {
 return (
       <NavigationContainer>
@@ -66,9 +57,11 @@ return (
       </NavigationContainer>
     );
 }
+```
 
 >TabNavigation.js (Tab Navigation)
 
+```
 Function TabNavigation() {
 return (
             <Tab.Navigator>
@@ -76,7 +69,7 @@ return (
             </Tab.Navigator>
   );
 }
-
+```
 
 On using options, we can update changes to header:
 
