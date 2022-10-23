@@ -2,12 +2,7 @@ import { Component } from 'react';
 import { Image,StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AssignmentOne from './components/assignmentOne';
-import AssignmentTwo from './components/assignmentTwo';
-import AssignmentThree from './components/assignmentThree';
-import AssignmentFour from './components/AssignmentFour';
-import PracticeAssignment from './components/practiceAssignment';
-import TabNavigation from './tabNavigation';
+import SectionListFile from './src/SectionListFile';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,26 +10,8 @@ export default class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>
-          <Stack.Screen name="Assignment 1" component={AssignmentOne} options={{ headerTitleAlign: "center" }} />
-          <Stack.Screen name="Assignment 2" component={AssignmentTwo} options={{
-                    headerRight: () => (
-                        <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
-                    ),
-                }} />
-          <Stack.Screen name="Assignment 3" component={AssignmentThree} options={{
-            headerTitle: "Log Into Saavn",
-            headerTintColor: "#ffff",
-            headerBackground: 'rgb(110,186,121)',
-
-          }}/>
-          <Stack.Screen name="Assignment 4" component={AssignmentFour} options={{
-            headerTitle: "Color Code Viewer"
-            }}/>
-          <Stack.Screen name="Practice Assignment" component={PracticeAssignment} options={{
-            headerTitle: "Myntra"
-            }}/>
+        <Stack.Navigator initialRouteName="ScreenHome">
+          <Stack.Screen name="ScreenHome" component={SectionListFile} options={{ headerTitle: 'Section List', headerTitleAlign: "center"}}/> 
         </Stack.Navigator>
       </NavigationContainer>
     );
