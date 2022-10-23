@@ -1,177 +1,82 @@
-import React, {Component} from 'react';
-import {View, Text, SafeAreaView, Button, TouchableOpacity, Alert, StyleSheet } from 'react-native';
-import CounterValue from './CounterValue';
+import { Component } from 'react';
+import { Image,StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AssignmentOne from './components/assignmentOne';
+import AssignmentTwo from './components/assignmentTwo';
+import AssignmentThree from './components/assignmentThree';
+import AssignmentFour from './components/AssignmentFour';
+import PracticeAssignment from './components/practiceAssignment';
+import TabNavigation from './tabNavigation';
 
-class App extends Component {
-  
-  constructor(props){
-    super(props);
-    this.state = { counter: 0 };
-    console.log("calling the constructor");
-  }
+const Stack = createNativeStackNavigator();
 
-  static getDerivedStateFromProps(props, state){
-    console.log("inside getDerivedStateFromProps()");
-    return null;
-  }
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>
+          <Stack.Screen name="Assignment 1" component={AssignmentOne} />
+          <Stack.Screen name="Assignment 2" component={AssignmentTwo} options={{
+                    headerRight: () => (
+                        <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
+                    ),
+                }} />
+          <Stack.Screen name="Assignment 3" component={AssignmentThree} options={{
+            headerTitle: "Log Into Saavn",
+            headerTintColor: "#ffff",
+            headerBackground: 'rgb(110,186,121)',
+            headerTitleAlign: "center",
 
-  onIncrement = () => {
-    if (this.state.counter >= 10){
-      Alert.alert("Value of counter cannot be incremented");
-    }
-    else{
-      this.setState({
-        counter : this.state.counter + 1
-      })
-    }
-  }
-  onDecrement = () => {
-    if (this.state.counter <= 0){
-      Alert.alert("Value of counter cannot be less than 0");
-    }
-    else{
-      this.setState({
-        counter : this.state.counter - 1
-      }
-      )
-    }
-  }
-
-  onReset = () => {
-    this.setState({
-      counter : this.state.counter = 0
-    })
-  }
-
-  render(){
-    console.log("calling the render()");
-    const { counter } = this.state;
-    return(
-      <SafeAreaView style={styles.container}>
-        <View>
-          <Text style={styles.title}>
-            Counter Application
-          </Text>
-          <CounterValue counter={this.state.counter}/>
-          
-
-          <TouchableOpacity 
-          style={styles.Decrement} 
-          onPress={this.onDecrement} 
-          >
-          <Text style= {styles.text}>-</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-          style={styles.Increment}
-          onPress={this.onIncrement}
-          >
-          <Text style= {styles.text}>+</Text>
-          </TouchableOpacity>
-        </View>
-      <View>
-         <TouchableOpacity
-           style={styles.button}
-           onPress={this.onReset}
-         >
-           <Text style={styles.reset}>Reset</Text>
-         </TouchableOpacity>
-      </View>
-      </SafeAreaView>
+          }}/>
+          <Stack.Screen name="Assignment 4" component={AssignmentFour} options={{
+            headerTitle: "Color Code Viewer",
+            headerTitleAlign: "center",
+            }}/>
+          <Stack.Screen name="Practice Assignment" component={PracticeAssignment} options={{
+            headerTitle: "Myntra",
+            headerTitleAlign: "center",
+            }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
-  }
-  componentDidMount(){
-    console.log("calling the DidMount()");
-  }
-
-  static getDerivedStateFromProps(props, state){
-    console.log("calling getDerivedStateFromProps()");
-    return null;
-  }
-
-  shouldComponentUpdate() {
-    console.log("calling shouldComponentUpdate()")
-    return true;
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("calling getSnapshotBeforeUpdate()");
-    return null;
-  }
-
-  componentDidUpdate() {
-    console.log("calling the DidUpdate()");
-  }
-  
-  componentWillUnmount() {
-    console.log("calling the WillUnmount()");
   }
 }
 
-export default App;
-
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
-    justifyContent: 'center',
-    
-
-  },
-  
-  title: {
-    top: 20,
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    fontFamily: 'arial',
-  },
-
-  Decrement: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 40,
-    width: 100,
-    height: 40,
-    padding: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "black",
   },
-
-  text: {
+  welcomeTxt: {
+    marginVertical: 30,
     fontSize: 20,
-    color: '#000000',
-    fontFamily: 'arial',
+    fontFamily: 'Helvetica',
+    fontWeight: '500',
+    color: 'white',
   },
-
-  Increment: {
-    alignItems: 'center',
-    backgroundColor:'#DDDDDD',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 250,
-    width: 100,
-    height: 40,
-  },
-
   button: {
-    alignItems: 'center',
-    backgroundColor: '#000000',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 35,
-    width: 320,
-    height: 40,  
+    width: "80%",
+    height: "7%",
+    margin: 10,
+    backgroundColor: "rgb(172,178,191)",
+    border: 0,
+    borderRadius: 10,
+    padding: 15,
   },
-
-  reset: {
-    color: '#FFFFFF',
-    fontSize: 16,
+  text: {
+    textAlign: 'center',
+    fontSize: 15,
     fontFamily: 'arial',
-  }
-
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  logo: {
+    height: 20,
+    width: 20,
+    margin: 5,
+}
 })
