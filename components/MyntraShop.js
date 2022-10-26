@@ -3,12 +3,13 @@ import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, Alert, S
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const DATA = [
+var DATA = [
     {
         image: { uri: "https://diariolibre.blob.core.windows.net.optimalcdn.com/images/binrepository/actor-de-365-michele-morrone_15949464_20210310185052.jpg" },
         brand: "Tommy Hilfiger",
         info: "Men's Morrison Polo, Limelight Combo",
         price: 'USD 23',
+        liked: false
 
     },
     {
@@ -16,18 +17,21 @@ const DATA = [
         brand: "Tommy Hilfiger",
         info: "Men's Longsleeve White Shirt, White/Black/Red",
         price: 'USD 23',
+        liked: false
     },
     {
         image: { uri: "https://cdn-fnknc.nitrocdn.com/jwqHRGAzpUgGskUSHlppNQzwuXgXIKwg/assets/static/optimized/rev-88d21a1/wp-content/uploads/2021/11/Luca_Faloni_Moss-Green-Brushed-Cotton-Shirt_Editorial_Hero_Desktop_Made_in_Italy_2.jpeg" },
         brand: "Louis Vuitton",
         info: "Men's Fullsleeve Shirt, Olive Green",
         price: 'USD 25',
+        liked: false
     },
     {
         image: { uri: "https://assets.teenvogue.com/photos/6192959423b6e1fb7c3dfef6/4:3/w_625,h_468,c_limit/Dazed_Winter_2021_Harry_Styles_inside11%20copy.jpg" },
         brand: "H&M",
         info: "Single Breasted Blazer, White/Black",
         price: 'USD 30',
+        liked: false
     },
 ];
 class HomeScreen extends Component {
@@ -38,8 +42,9 @@ class HomeScreen extends Component {
         };
     }
 
-    onClick = () => {
-        this.setState({ check: !this.state.check })
+    onClick = (index) => { 
+        DATA[index].liked = !DATA[index].liked
+       this.setState({check: !this.state.check})
     }
     
     render() {
@@ -117,7 +122,7 @@ class HomeScreen extends Component {
 
                 <ScrollView contentContainerStyle={{ paddingTop: 10 }} style={style.productScroll}>
                     <View style={style.productSection}>
-                        {DATA.map(item => {
+                        {DATA.map((item,index) => {
                             return (
                                 <View style={style.product}>
 
@@ -128,9 +133,9 @@ class HomeScreen extends Component {
                                     />
 
                                     <Text style={style.newTxt}>NEW</Text>
-                                    <TouchableOpacity onPress={this.onClick}>
+                                    <TouchableOpacity onPress={()=>this.onClick(index)}>
 
-                                        {this.state.check == 0 ?
+                                        {!item.liked ?
                                             <Image style={style.wishlist} resizeMode={'contain'} source={{ uri: "https://cdn-icons-png.flaticon.com/512/2767/2767018.png" }} /> :
 
                                             <Image style={style.wishlist} resizeMode={'contain'} source={{ uri: "https://cdn-icons-png.flaticon.com/128/2767/2767003.png" }} />}
