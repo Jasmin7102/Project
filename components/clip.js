@@ -42,13 +42,12 @@ export default function ClipboardUI(props) {
 
     const copyToClipboard = () => {
         Clipboard.setString(copiedText);
-        // Alert.alert('Copied to clipboard');
     };
 
     const fetchCopiedText = async () => {
         const text = await Clipboard.getString();
         setCopiedText(text);
-        await Alert.alert('Copied Text', copiedText);
+        Alert.alert('Copied Text', copiedText);
 
     }
 
@@ -67,7 +66,7 @@ export default function ClipboardUI(props) {
                 </TouchableOpacity>
                 <View>
                     <TouchableOpacity style={style.button} onPress={fetchCopiedText}>
-                        <Text style={style.buttonText}>SHOW COPIED TEXT</Text> dsfdss
+                        <Text style={style.buttonText}>SHOW COPIED TEXT</Text> 
                     </TouchableOpacity>
                 </View>
             </View>
@@ -80,20 +79,24 @@ const style = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         marginHorizontal: 15,
-        alignItems: 'center',
+        // textAlign: 'center',
         
     },
     inputTxt: {
         marginVertical: 20,
         borderWidth: 1,
         padding: 20,
-        width: "80%"
+        
+        //width: "80%"
         
     },
-    copyButton: {
-        width: '80%',
+    button: {
+        // textAlign: 'center',
+        // alignItem: 'center',
+        // width:'60%',
     },
     buttonText: {
+        textAlign: 'center',
         backgroundColor: "orange",
         padding: 15,
         border: 0,
