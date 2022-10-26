@@ -40,7 +40,7 @@ export default class HomeScreen extends Component {
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Alert')}
         >
-          <Text style={styles.text}>Alert</Text>
+          <Text style={styles.text}>Clipboard & Alert</Text>
         </TouchableOpacity>
       </View>
     );}}

@@ -14,7 +14,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import React, { useEffect, useState } from 'react';
 
 
-export default function ClipboardUI(props) {
+export default function clip(props) {
 
     const [copiedText, setCopiedText] = useState('');
     const [showCopiedText, setShowCopiedText] = useState(false);
@@ -27,7 +27,7 @@ export default function ClipboardUI(props) {
                     onPress: () => null,
                     style: "cancel"
                 },
-                { text: "YES", onPress: () => props.navigation.goBack() }
+                { text: "YES", onPress: () => this.props.navigation.goBack() }
             ]);
             return true;
         };

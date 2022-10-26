@@ -8,8 +8,9 @@ import AssignmentThree from './components/assignmentThree';
 import AssignmentFour from './components/AssignmentFour';
 import PracticeAssignment from './components/practiceAssignment';
 //import TabNavigation from './tabNavigation';
-import AlertComp from './components/Alert';
+//import AlertComp from './components/Alert';
 import HomeScreen from './HomeScreen';
+import clip from './components/clip';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,8 +44,8 @@ export default class App extends Component {
             headerTitle: "Myntra",
             headerTitleAlign: "center",
           }} />
-          <Stack.Screen name="Alert" component={AlertComp} options={{
-            headerTitle: "Alert",
+          <Stack.Screen name="Alert" component={clip} options={{
+            headerTitle: "Clipboard & Alert",
             headerTitleAlign: "center",
           }} />
         </Stack.Navigator>
