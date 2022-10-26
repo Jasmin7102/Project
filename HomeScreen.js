@@ -36,6 +36,12 @@ export default class HomeScreen extends Component {
         >
           <Text style={styles.text}>Practice Assignment</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('Alert')}
+        >
+          <Text style={styles.text}>Alert</Text>
+        </TouchableOpacity>
       </View>
     );}}
 
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "80%",
-    height: "8%",
+    height: "7%",
     margin: 10,
     backgroundColor: "rgb(172,178,191)",
     border: 0,

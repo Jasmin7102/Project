@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Image,StyleSheet } from 'react-native';
+import { Alert, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AssignmentOne from './components/assignmentOne';
@@ -7,7 +7,9 @@ import AssignmentTwo from './components/assignmentTwo';
 import AssignmentThree from './components/assignmentThree';
 import AssignmentFour from './components/AssignmentFour';
 import PracticeAssignment from './components/practiceAssignment';
-import TabNavigation from './tabNavigation';
+//import TabNavigation from './tabNavigation';
+import AlertComp from './components/Alert';
+import HomeScreen from './HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,28 +18,35 @@ export default class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="ScreenHome" component={TabNavigation} options={{headerShown: false}}/>
+          <Stack.Screen name="ScreenHome" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Assignment 1" component={AssignmentOne} />
           <Stack.Screen name="Assignment 2" component={AssignmentTwo} options={{
-                    headerRight: () => (
-                        <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
-                    ),
-                }} />
+            headerRight: () => (
+              <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
+            ),
+          }} />
           <Stack.Screen name="Assignment 3" component={AssignmentThree} options={{
             headerTitle: "Log Into Saavn",
             headerTintColor: "#ffff",
-            headerBackground: 'rgb(110,186,121)',
+            headerStyle: {
+              backgroundColor: 'rgb(110,186,121)',
+            },
+
             headerTitleAlign: "center",
 
-          }}/>
+          }} />
           <Stack.Screen name="Assignment 4" component={AssignmentFour} options={{
             headerTitle: "Color Code Viewer",
             headerTitleAlign: "center",
-            }}/>
+          }} />
           <Stack.Screen name="Practice Assignment" component={PracticeAssignment} options={{
             headerTitle: "Myntra",
             headerTitleAlign: "center",
-            }}/>
+          }} />
+          <Stack.Screen name="Alert" component={AlertComp} options={{
+            headerTitle: "Alert",
+            headerTitleAlign: "center",
+          }} />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -78,5 +87,5 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     margin: 5,
-}
+  }
 })
