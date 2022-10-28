@@ -1,45 +1,11 @@
-import {
-    View,
-    Text,
-    SafeAreaView,
-    TextInput,
-    TouchableOpacity,
-    Alert,
-    StyleSheet,
-    BackHandler
-} from 'react-native';
+import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
-
-
-import React, { useEffect, useState } from 'react';
-
+import React, { useState } from 'react'; 
 
 export default function clip(props) {
 
     const [copiedText, setCopiedText] = useState('');
-    const [showCopiedText, setShowCopiedText] = useState(false);
-
-    useEffect(() => {
-        const backAction = () => {
-            Alert.alert("Hold on!", "Are you sure you want to go back?", [
-                {
-                    text: "Cancel",
-                    onPress: () => null,
-                    style: "cancel"
-                },
-                { text: "YES", onPress: () => this.props.navigation.goBack() }
-            ]);
-            return true;
-        };
-
-        const backHandler = BackHandler.addEventListener(
-            "hardwareBackPress",
-            backAction
-        );
-
-        return () => backHandler.remove();
-    }, []);
-
+    
     const copyToClipboard = () => {
         Clipboard.setString(copiedText);
     };
@@ -50,8 +16,6 @@ export default function clip(props) {
         Alert.alert('Copied Text', copiedText);
 
     }
-
-
 
     return (
         <SafeAreaView style={style.container}>
@@ -79,21 +43,11 @@ const style = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         marginHorizontal: 15,
-        // textAlign: 'center',
-        
     },
     inputTxt: {
         marginVertical: 20,
         borderWidth: 1,
-        padding: 20,
-        
-        //width: "80%"
-        
-    },
-    button: {
-        // textAlign: 'center',
-        // alignItem: 'center',
-        // width:'60%',
+        padding: 20,    
     },
     buttonText: {
         textAlign: 'center',
@@ -101,7 +55,6 @@ const style = StyleSheet.create({
         padding: 15,
         border: 0,
         borderRadius: 5,
-        marginBottom: 20,
-        
+        marginBottom: 20, 
     },
 });

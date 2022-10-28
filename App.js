@@ -1,50 +1,24 @@
 import { Component } from 'react';
-import { Alert, Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AssignmentOne from './components/assignmentOne';
-import AssignmentTwo from './components/assignmentTwo';
-import AssignmentThree from './components/assignmentThree';
-import AssignmentFour from './components/AssignmentFour';
-import PracticeAssignment from './components/practiceAssignment';
-//import TabNavigation from './tabNavigation';
-//import AlertComp from './components/Alert';
-import HomeScreen from './HomeScreen';
-import clip from './components/clip';
+
+import HomeScreen from '../Project/src/container/HomeScreen';
+import Alert from  '../Project/src/components/Alert';
+import Clip from './src/components/Clip';
 
 const Stack = createNativeStackNavigator();
-
 export default class App extends Component {
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="ScreenHome" component={HomeScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="Assignment 1" component={AssignmentOne} />
-          <Stack.Screen name="Assignment 2" component={AssignmentTwo} options={{
-            headerRight: () => (
-              <Image style={styles.logo} source={{ uri: "https://img.icons8.com/material-outlined/344/bookmark-ribbon--v1.png" }} />
-            ),
-          }} />
-          <Stack.Screen name="Assignment 3" component={AssignmentThree} options={{
-            headerTitle: "Log Into Saavn",
-            headerTintColor: "#ffff",
-            headerStyle: {
-              backgroundColor: 'rgb(110,186,121)',
-            },
-
-            headerTitleAlign: "center",
-
-          }} />
-          <Stack.Screen name="Assignment 4" component={AssignmentFour} options={{
-            headerTitle: "Color Code Viewer",
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Alert" component={Alert} options={{
+            headerTitle: "Clipboard & Alert",
             headerTitleAlign: "center",
           }} />
-          <Stack.Screen name="Practice Assignment" component={PracticeAssignment} options={{
-            headerTitle: "Myntra",
-            headerTitleAlign: "center",
-          }} />
-          <Stack.Screen name="Alert" component={clip} options={{
+          <Stack.Screen name="Clip" component={Clip} options={{
             headerTitle: "Clipboard & Alert",
             headerTitleAlign: "center",
           }} />
