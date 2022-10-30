@@ -1,177 +1,69 @@
-import React, {Component} from 'react';
-import {View, Text, SafeAreaView, Button, TouchableOpacity, Alert, StyleSheet } from 'react-native';
-import CounterValue from './CounterValue';
+import React, { Component } from "react";
+import { Animated, Text, View, StyleSheet, Button, SafeAreaView } from "react-native";
 
 class App extends Component {
-  
-  constructor(props){
-    super(props);
-    this.state = { counter: 0 };
-    console.log("calling the constructor");
-  }
+  // fadeAnim will be used as the value for opacity. Initial Value: 0
+  state = {
+    fadeAnim: new Animated.Value(0)
+  };
 
-  static getDerivedStateFromProps(props, state){
-    console.log("inside getDerivedStateFromProps()");
-    return null;
-  }
+  fadeIn = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 1,
+      duration: 5000
+    }).start();
+  };
 
-  onIncrement = () => {
-    if (this.state.counter >= 10){
-      Alert.alert("Value of counter cannot be incremented");
-    }
-    else{
-      this.setState({
-        counter : this.state.counter + 1
-      })
-    }
-  }
-  onDecrement = () => {
-    if (this.state.counter <= 0){
-      Alert.alert("Value of counter cannot be less than 0");
-    }
-    else{
-      this.setState({
-        counter : this.state.counter - 1
-      }
-      )
-    }
-  }
+  fadeOut = () => {
+    // Will change fadeAnim value to 0 in 3 seconds
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 0,
+      duration: 3000
+    }).start();
+  };
 
-  onReset = () => {
-    this.setState({
-      counter : this.state.counter = 0
-    })
-  }
-
-  render(){
-    console.log("calling the render()");
-    const { counter } = this.state;
-    return(
+  render() {
+    return (
       <SafeAreaView style={styles.container}>
-        <View>
-          <Text style={styles.title}>
-            Counter Application
-          </Text>
-          <CounterValue counter={this.state.counter}/>
-          
-
-          <TouchableOpacity 
-          style={styles.Decrement} 
-          onPress={this.onDecrement} 
-          >
-          <Text style= {styles.text}>-</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-          style={styles.Increment}
-          onPress={this.onIncrement}
-          >
-          <Text style= {styles.text}>+</Text>
-          </TouchableOpacity>
+        <Animated.View
+          style={[
+            styles.fadingContainer,
+            {
+              // Bind opacity to animated value
+              opacity: this.state.fadeAnim
+            }
+          ]}
+        >
+          <Text style={styles.fadingText}>Fading View!</Text>
+        </Animated.View>
+        <View style={styles.buttonRow}>
+          <Button title="Fade In View" onPress={this.fadeIn} />
+          <Button title="Fade Out View" onPress={this.fadeOut} />
         </View>
-      <View>
-         <TouchableOpacity
-           style={styles.button}
-           onPress={this.onReset}
-         >
-           <Text style={styles.reset}>Reset</Text>
-         </TouchableOpacity>
-      </View>
       </SafeAreaView>
     );
   }
-  componentDidMount(){
-    console.log("calling the DidMount()");
-  }
-
-  static getDerivedStateFromProps(props, state){
-    console.log("calling getDerivedStateFromProps()");
-    return null;
-  }
-
-  shouldComponentUpdate() {
-    console.log("calling shouldComponentUpdate()")
-    return true;
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("calling getSnapshotBeforeUpdate()");
-    return null;
-  }
-
-  componentDidUpdate() {
-    console.log("calling the DidUpdate()");
-  }
-  
-  componentWillUnmount() {
-    console.log("calling the WillUnmount()");
-  }
 }
-
-export default App;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
-    justifyContent: 'center',
-    
-
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
-  
-  title: {
-    top: 20,
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    fontFamily: 'arial',
+  fadingContainer: {
+    padding: 20,
+    backgroundColor: "powderblue"
   },
-
-  Decrement: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 40,
-    width: 100,
-    height: 40,
-    padding: 10,
+  fadingText: {
+    fontSize: 28
   },
-
-  text: {
-    fontSize: 20,
-    color: '#000000',
-    fontFamily: 'arial',
-  },
-
-  Increment: {
-    alignItems: 'center',
-    backgroundColor:'#DDDDDD',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 250,
-    width: 100,
-    height: 40,
-  },
-
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#000000',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 35,
-    width: 320,
-    height: 40,  
-  },
-
-  reset: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontFamily: 'arial',
+  buttonRow: {
+    flexBasis: 100,
+    justifyContent: "space-evenly",
+    marginVertical: 16
   }
+});
 
-})
+export default App;
