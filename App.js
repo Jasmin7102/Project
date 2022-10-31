@@ -1,177 +1,111 @@
-import React, {Component} from 'react';
-import {View, Text, SafeAreaView, Button, TouchableOpacity, Alert, StyleSheet } from 'react-native';
-import CounterValue from './CounterValue';
+import { useState } from "react";
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
+import { DATA } from './data';
 
-class App extends Component {
-  
-  constructor(props){
-    super(props);
-    this.state = { counter: 0 };
-    console.log("calling the constructor");
-  }
-
-  static getDerivedStateFromProps(props, state){
-    console.log("inside getDerivedStateFromProps()");
-    return null;
-  }
-
-  onIncrement = () => {
-    if (this.state.counter >= 10){
-      Alert.alert("Value of counter cannot be incremented");
-    }
-    else{
-      this.setState({
-        counter : this.state.counter + 1
-      })
-    }
-  }
-  onDecrement = () => {
-    if (this.state.counter <= 0){
-      Alert.alert("Value of counter cannot be less than 0");
-    }
-    else{
-      this.setState({
-        counter : this.state.counter - 1
-      }
-      )
-    }
-  }
-
-  onReset = () => {
-    this.setState({
-      counter : this.state.counter = 0
-    })
-  }
-
-  render(){
-    console.log("calling the render()");
-    const { counter } = this.state;
-    return(
-      <SafeAreaView style={styles.container}>
-        <View>
-          <Text style={styles.title}>
-            Counter Application
-          </Text>
-          <CounterValue counter={this.state.counter}/>
-          
-
-          <TouchableOpacity 
-          style={styles.Decrement} 
-          onPress={this.onDecrement} 
-          >
-          <Text style= {styles.text}>-</Text>
-          </TouchableOpacity>
+export default App = () => {
+  const [id, setId] = useState("");
+    return (
+      <SafeAreaView style={styles.component}>
+        <View style={styles.mainRow}>
+          <TextInput onChange={(value) => setId(value)} style={styles.txt}></TextInput>
           <TouchableOpacity
-          style={styles.Increment}
-          onPress={this.onIncrement}
+            style={styles.button}
+            onPress={this.go}
           >
-          <Text style= {styles.text}>+</Text>
+            <Text style={styles.goTxt}>Go</Text>
           </TouchableOpacity>
         </View>
-      <View>
-         <TouchableOpacity
-           style={styles.button}
-           onPress={this.onReset}
-         >
-           <Text style={styles.reset}>Reset</Text>
-         </TouchableOpacity>
-      </View>
+        <FlatList
+          data={DATA}
+          keyExtriactor={(index) => index.toString()}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.flatView}>
+
+                {item.imageUrl && (
+                  <View style={styles.flatIcon}>
+                    <Image
+                      source={{ uri: item.imageUrl }}
+                      style={styles.flatImgIcons}
+                    />
+                  </View>
+                )}
+
+                {!!item.id && (
+                  <View style={styles.flatTxtView}>
+                    <Text
+                      style={styles.flatTxt}>
+                      {item.id}
+                    </Text>
+                  </View>
+                )}
+
+              </View>
+            );
+          }}
+        />
       </SafeAreaView>
+
     );
   }
-  componentDidMount(){
-    console.log("calling the DidMount()");
-  }
 
-  static getDerivedStateFromProps(props, state){
-    console.log("calling getDerivedStateFromProps()");
-    return null;
-  }
-
-  shouldComponentUpdate() {
-    console.log("calling shouldComponentUpdate()")
-    return true;
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("calling getSnapshotBeforeUpdate()");
-    return null;
-  }
-
-  componentDidUpdate() {
-    console.log("calling the DidUpdate()");
-  }
-  
-  componentWillUnmount() {
-    console.log("calling the WillUnmount()");
-  }
-}
-
-export default App;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 0,
-    justifyContent: 'center',
-    
 
+  component: {
+    backgroundColor: 'white',
+    border: 0,
+    borderRadius: 15,
+    alignItems: 'flex-start'
   },
-  
-  title: {
-    top: 20,
-    textAlign: 'center',
-    fontSize: 30,
+  mainRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  txt: {
+    padding: 20,
+    alignSelf: 'center',
+    fontSize: 14,
+    margin: 10,
+    borderWidth: 1,
     fontWeight: 'bold',
-    fontFamily: 'arial',
+    height: "70%",
+    width: "78%",
   },
-
-  Decrement: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 40,
+  flatView: {
+    alignItems: 'center'
+  },
+  flatIcon: {
+    border: 0,
+    borderRadius: 100,
+    padding: 12,
+  },
+  flatImgIcons: {
+    height: 100,
     width: 100,
-    height: 40,
+  },
+  flatTxtView: {
+    width: 90,
+    paddingTop: 5,
+    paddingBottom: 20,
+  },
+  flatTxt: {
+    textAlign: 'center',
+    fontSize: 10,
+    color: 'rgb(133,136,140)',
+  },
+  goTxt: {
+    textAlign: 'center',
+    fontSize: 16,
     padding: 10,
   },
-
-  text: {
-    fontSize: 20,
-    color: '#000000',
-    fontFamily: 'arial',
-  },
-
-  Increment: {
-    alignItems: 'center',
-    backgroundColor:'#DDDDDD',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 250,
-    width: 100,
-    height: 40,
-  },
-
   button: {
-    alignItems: 'center',
-    backgroundColor: '#000000',
-    borderRadius: 20,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 400,
-    marginLeft: 35,
-    width: 320,
-    height: 40,  
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
+    border: 0,
+    borderRadius: 5,
+    margin: 10,
   },
-
-  reset: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontFamily: 'arial',
-  }
 
 })
