@@ -1,62 +1,129 @@
-import { useState } from "react";
-import { View, Text, SafeAreaView, FlatList, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
+import { useCallback, useRef, useState } from "react";
+import { View, Text, SafeAreaView, FlatList, Alert, TouchableOpacity, Image, StyleSheet, TextInput, LogBox } from 'react-native';
 import { DATA } from './data';
 
 export default App = () => {
-  const [id, setId] = useState("");
-    return (
-      <SafeAreaView style={styles.component}>
-        <View style={styles.mainRow}>
-          <TextInput onChange={(value) => setId(value)} style={styles.txt}></TextInput>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={this.go}
-          >
-            <Text style={styles.goTxt}>Go</Text>
-          </TouchableOpacity>
-        </View>
-        <FlatList
-          data={DATA}
-          keyExtriactor={(index) => index.toString()}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.flatView}>
 
-                {item.imageUrl && (
-                  <View style={styles.flatIcon}>
-                    <Image
-                      source={{ uri: item.imageUrl }}
-                      style={styles.flatImgIcons}
-                    />
-                  </View>
-                )}
+  const [input, setInput] = useState('');
+  const [isEnd, setIsEnd] = useState(false)
+  var flatlistRef = useRef(null).current
+  const _keyExtractor = useCallback((_, index) => index.toString());
+  const _getItemLayout = useCallback(((_, index) => (
+    { length: 400, offset: 400 * index, index }
+  )))
 
-                {!!item.id && (
-                  <View style={styles.flatTxtView}>
-                    <Text
-                      style={styles.flatTxt}>
-                      {item.id}
-                    </Text>
-                  </View>
-                )}
-
-              </View>
-            );
-          }}
-        />
-      </SafeAreaView>
-
-    );
+  const onEnd = () => {
+    setIsEnd(true);
   }
+
+  let len = DATA.length;
+  let total = len*400;
+  const onScrollEvent = ({contentOffset}) => { 
+    return contentOffset.y <= 15370
+  };
+
+  return (
+    <SafeAreaView style={styles.component}>
+      <View style={styles.mainRow}>
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={
+            (text) => setInput(text)
+          }
+          style={styles.txt}>
+        </TextInput>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            try {
+              const index = DATA.findIndex((item) => item?.id === parseInt(input));
+
+              if (typeof (parseInt(input)) === 'number' && index >= 0) {
+                flatlistRef.scrollToIndex({
+                  index: index,
+                  animted: true
+                })
+              } else {
+                // Todo
+              }
+            } catch (error) {
+              console.error(error);
+            }
+
+          }}
+        >
+          <Text style={styles.scrollTxt}>GO</Text>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        data={DATA}
+        getItemLayout={_getItemLayout}
+        keyExtractor={_keyExtractor}
+        ref={(ref) => {
+          flatlistRef = ref
+        }}
+        onEndReached={onEnd}
+        onScroll={({nativeEvent}) => {
+          if(onScrollEvent(nativeEvent)){
+            
+            setIsEnd(false)
+          }
+          
+        }}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.flatView}>
+              {item?.imageUrl && (
+                <View style={styles.flatIcon}>
+                  <Image
+                    source={{ uri: item.imageUrl }}
+                    style={styles.flatImgIcons}
+                  />
+                </View>
+              )}
+              {item?.id && (
+                <View style={styles.flatTxtView}>
+                  <Text style={styles.flatTxt}>
+                    {item.id}
+                  </Text>
+                </View>
+              )}
+
+
+            </View>
+          );
+        }}
+      />
+      {isEnd && <View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            flatlistRef.scrollToIndex({
+              index: 0,
+              animted: true,
+              viewPosition: 1,
+            })
+          }}
+        >
+          <Text style={styles.scrollTxt}>SCROLL TO TOP</Text>
+        </TouchableOpacity>
+      </View>}
+    </SafeAreaView>
+
+  );
+}
 
 
 const styles = StyleSheet.create({
 
   component: {
+    flex: 1,
     backgroundColor: 'white',
     border: 0,
     borderRadius: 15,
-    alignItems: 'flex-start'
+    alignItems: 'center',
+    marginVertical: 20,
   },
   mainRow: {
     flexDirection: 'row',
@@ -73,25 +140,25 @@ const styles = StyleSheet.create({
     width: "78%",
   },
   flatView: {
-    alignItems: 'center'
+    marginBottom: 20,
+    alignItems: 'center',
   },
   flatIcon: {
-    border: 0,
-    borderRadius: 100,
-    padding: 12,
+    width: 300,
+    height: 360,
+    borderRadius: 30,
+    overflow: 'hidden',
   },
   flatImgIcons: {
-    height: 100,
-    width: 100,
+    height: '100%',
+    width: '100%'
   },
   flatTxtView: {
-    width: 90,
     paddingTop: 5,
-    paddingBottom: 20,
   },
   flatTxt: {
+    fontSize: 14,
     textAlign: 'center',
-    fontSize: 10,
     color: 'rgb(133,136,140)',
   },
   goTxt: {
@@ -100,12 +167,19 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10,
-    border: 0,
-    borderRadius: 5,
+
+    backgroundColor: 'rgb(133,136,140)',
+    //color: 'white',
     margin: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+   justifyContent: 'center',
+
   },
+  scrollTxt: {
+    fontSize: 14,
+    padding: 20,
+    color: 'white',
+  }
 
 })
