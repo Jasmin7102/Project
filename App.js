@@ -1,185 +1,211 @@
-import { useCallback, useRef, useState } from "react";
-import { View, Text, SafeAreaView, FlatList, Alert, TouchableOpacity, Image, StyleSheet, TextInput, LogBox } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  TextInput,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
+import { useRef, useState, useCallback } from 'react';
+
 import { DATA } from './data';
 
-export default App = () => {
+const endThreshold = 100;
+const ITEM_HEIGHT = 320; // ItemHeight (300) + MarginBottom (20)
 
+const App = () => {
+  let flatlistRef = useRef(null).current;
   const [input, setInput] = useState('');
-  const [isEnd, setIsEnd] = useState(false)
-  var flatlistRef = useRef(null).current
-  const _keyExtractor = useCallback((_, index) => index.toString());
-  const _getItemLayout = useCallback(((_, index) => (
-    { length: 400, offset: 400 * index, index }
-  )))
+  const [isEnd, setIsEnd] = useState(false);
 
-  const onEnd = () => {
-    setIsEnd(true);
-  }
+  const _keyExtractor = useCallback((item, index) => `${item.id}_${index}`, []);
+  const _getItemLayout = useCallback(
+    (_, index) => ({
+      length: ITEM_HEIGHT,
+      offset: ITEM_HEIGHT * index,
+      index,
+    }),
+    []
+  );
 
-  let len = DATA.length;
-  let total = len*400;
-  const onScrollEvent = ({contentOffset}) => { 
-    return contentOffset.y <= 15370
-  };
+  const onEnd = () => setIsEnd(true);
+
+  const onScrollEvent = ({ contentOffset }) =>
+    contentOffset.y <= ITEM_HEIGHT * (DATA.length - 1) - endThreshold;
+
+  const renderItem = ({ item }) => (
+    <View style={styles.imageWrapper}>
+      <Image style={styles.imageStyle} source={{ uri: item?.imageUrl }} />
+      {item?.id && (
+        <View style={styles.imageIDView}>
+          <Text style={styles.imageIDText}>{item.id}</Text>
+        </View>
+      )}
+    </View>
+  );
 
   return (
-    <SafeAreaView style={styles.component}>
-      <View style={styles.mainRow}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.headerView}>
         <TextInput
-          keyboardType="numeric"
-          onChangeText={
-            (text) => setInput(text)
-          }
-          style={styles.txt}>
-        </TextInput>
-
+          keyboardType='numeric'
+          style={styles.textInput}
+          onChangeText={(text) => setInput(text)}
+        />
         <TouchableOpacity
-          style={styles.button}
+          style={styles.goButton}
           onPress={() => {
             try {
-              const index = DATA.findIndex((item) => item?.id === parseInt(input));
+              const index = DATA.findIndex(
+                (item) => item?.id === parseInt(input)
+              );
 
-              if (typeof (parseInt(input)) === 'number' && index >= 0) {
+              if (typeof parseInt(input) === 'number' && index >= 0) {
                 flatlistRef.scrollToIndex({
                   index: index,
-                  animted: true
-                })
+                  animted: true,
+                });
               } else {
                 // Todo
               }
             } catch (error) {
               console.error(error);
             }
-
           }}
         >
-          <Text style={styles.scrollTxt}>GO</Text>
+          <Text style={styles.goBtnText}>GO</Text>
         </TouchableOpacity>
       </View>
+
       <FlatList
         data={DATA}
-        getItemLayout={_getItemLayout}
-        keyExtractor={_keyExtractor}
+        windowSize={6}
+        bounces={false}
         ref={(ref) => {
-          flatlistRef = ref
+          flatlistRef = ref;
         }}
         onEndReached={onEnd}
-        onScroll={({nativeEvent}) => {
-          if(onScrollEvent(nativeEvent)){
-            
-            setIsEnd(false)
+        initialNumToRender={4}
+        style={styles.flatList}
+        renderItem={renderItem}
+        maxToRenderPerBatch={6}
+        scrollEventThrottle={160}
+        keyExtractor={_keyExtractor}
+        getItemLayout={_getItemLayout}
+        onScroll={({ nativeEvent }) => {
+          if (onScrollEvent(nativeEvent)) {
+            setIsEnd(false);
           }
-          
-        }}
-        renderItem={({ item }) => {
-          return (
-            <View style={styles.flatView}>
-              {item?.imageUrl && (
-                <View style={styles.flatIcon}>
-                  <Image
-                    source={{ uri: item.imageUrl }}
-                    style={styles.flatImgIcons}
-                  />
-                </View>
-              )}
-              {item?.id && (
-                <View style={styles.flatTxtView}>
-                  <Text style={styles.flatTxt}>
-                    {item.id}
-                  </Text>
-                </View>
-              )}
-
-
-            </View>
-          );
         }}
       />
-      {isEnd && <View>
+      {isEnd && (
         <TouchableOpacity
-          style={styles.button}
+          style={styles.scrollToTopBtn}
           onPress={() => {
-            flatlistRef.scrollToIndex({
+            flatlistRef?.scrollToIndex({
               index: 0,
               animted: true,
               viewPosition: 1,
-            })
+            });
           }}
         >
-          <Text style={styles.scrollTxt}>SCROLL TO TOP</Text>
+          <Image
+            style={styles.scrollToTopBtnIcon}
+            source={{
+              uri: 'https://img.icons8.com/ios-glyphs/50/FFFFFF/long-arrow-up.png',
+            }}
+          />
         </TouchableOpacity>
-      </View>}
+      )}
     </SafeAreaView>
-
   );
-}
-
+};
 
 const styles = StyleSheet.create({
-
-  component: {
+  container: {
     flex: 1,
     backgroundColor: 'white',
-    border: 0,
-    borderRadius: 15,
-    alignItems: 'center',
-    marginVertical: 20,
   },
-  mainRow: {
+  headerView: {
+    width: '100%',
+    marginBottom: 16,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    paddingHorizontal: 16,
+    justifyContent: 'space-between',
   },
-  txt: {
-    padding: 20,
-    alignSelf: 'center',
+  textInput: {
+    height: 50,
+    width: '82%',
     fontSize: 14,
-    margin: 10,
     borderWidth: 1,
+    borderRadius: 8,
     fontWeight: 'bold',
-    height: "70%",
-    width: "78%",
+    alignSelf: 'center',
+    paddingHorizontal: 20,
+    borderColor: '#8785A2',
   },
-  flatView: {
-    marginBottom: 20,
-    alignItems: 'center',
-  },
-  flatIcon: {
-    width: 300,
-    height: 360,
-    borderRadius: 30,
-    overflow: 'hidden',
-  },
-  flatImgIcons: {
-    height: '100%',
-    width: '100%'
-  },
-  flatTxtView: {
-    paddingTop: 5,
-  },
-  flatTxt: {
-    fontSize: 14,
-    textAlign: 'center',
-    color: 'rgb(133,136,140)',
-  },
-  goTxt: {
-    textAlign: 'center',
-    fontSize: 16,
-    padding: 10,
-  },
-  button: {
-
-    backgroundColor: 'rgb(133,136,140)',
-    //color: 'white',
-    margin: 10,
+  goButton: {
+    width: 50,
+    height: 50,
     borderRadius: 5,
     alignItems: 'center',
-   justifyContent: 'center',
-
+    justifyContent: 'center',
+    backgroundColor: '#8785A2',
   },
-  scrollTxt: {
+  goBtnText: {
     fontSize: 14,
-    padding: 20,
-    color: 'white',
-  }
+    color: '#F6F6F6',
+    fontWeight: 'bold',
+  },
+  flatList: {
+    flex: 1,
+  },
+  imageWrapper: {
+    width: 300,
+    height: 300,
+    marginBottom: 20,
+    borderRadius: 15,
+    overflow: 'hidden',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  imageStyle: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#FFE2E2',
+  },
+  imageIDView: {
+    left: 0,
+    width: '25%',
+    height: '8%',
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#8785A2ED',
+    borderBottomRightRadius: 15,
+  },
+  imageIDText: {
+    fontSize: 14,
+    color: '#F6F6F6',
+    textAlign: 'center',
+  },
+  scrollToTopBtn: {
+    width: 50,
+    right: 30,
+    height: 50,
+    bottom: 40,
+    borderRadius: 15,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#8785A2',
+  },
+  scrollToTopBtnIcon: {
+    width: '60%',
+    height: '60%',
+  },
+});
 
-})
+export default App;
