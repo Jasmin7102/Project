@@ -167,19 +167,14 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-
     backgroundColor: 'rgb(133,136,140)',
-    //color: 'white',
     margin: 10,
     borderRadius: 5,
     alignItems: 'center',
-   justifyContent: 'center',
-
   },
   scrollTxt: {
     fontSize: 14,
     padding: 20,
     color: 'white',
   }
-
 })
