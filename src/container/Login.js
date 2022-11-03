@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+/* eslint-disable no-alert */
+import React, { useCallback, useRef, useState } from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
-  TextInput,
-  Image,
   TouchableOpacity,
   StyleSheet,
   ImageBackground,
@@ -13,7 +11,7 @@ import {
 import { data } from '../utils/data';
 import CompTextInput from '../component/CompTextInput';
 
-Login = (props) => {
+const Login = (props) => {
   let inputTextRefArray = useRef(null);
 
   const [text, setText] = useState({
@@ -24,16 +22,19 @@ Login = (props) => {
     verifypassword: '',
   });
 
-  const _onChangeText = useCallback((value, type) => {
-    setText({ ...text, [type]: value });
-  });
+  const _onChangeText = useCallback(
+    (value, type) => {
+      setText({ ...text, [type]: value });
+    },
+    [text]
+  );
 
   const sendUserInfo = async () => {
     if (
       text.name === '' ||
       text.email === '' ||
       text.contact === '' ||
-      text.password == '' ||
+      text.password === '' ||
       text.verifypassword === ''
     ) {
       alert('Empty Fields');

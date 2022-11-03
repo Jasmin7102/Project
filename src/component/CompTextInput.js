@@ -1,17 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { View, TextInput, Image, StyleSheet, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, Image, StyleSheet } from 'react-native';
 
-const CompTextInput = ({
-  img,
-  placeholder,
-  index,
-  changeText,
-  type,
-  getTextRef,
-}) => {
+const CompTextInput = ({ img, placeholder, index, changeText, type }) => {
   const [focus, setFocus] = useState(false);
 
-  let textInputRef = useRef(null);
   return (
     <View key={index} style={style.componentView(focus)}>
       <View style={style.imgView}>
@@ -21,10 +13,6 @@ const CompTextInput = ({
       <TextInput
         style={style.textinput}
         placeholder={placeholder}
-        ref={(ref) => {
-          textInputRef = ref;
-          getTextRef(ref);
-        }}
         onBlur={() => setFocus(false)}
         onFocus={() => setFocus(true)}
         onChangeText={(value) => changeText(value, type)}
