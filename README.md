@@ -1,25 +1,10 @@
 # Project
 This repo contains code build in ReactNative framework.
 
-Assignment 1 : Counter Application
-> For the following project, please refer to the file app.js and CounterValue.js.
-
-> App.js contains the parent component and CounteValue.js is the child component.
-
-> App.js needs to imported inside index.js & registered as AppComponent for running the app:
-    import App from './App';
-    AppRegistry.registerComponent(appName, () => App);
-
-Output:
-<img width="437" alt="Screenshot 2022-10-08 at 7 25 01 PM" src="https://user-images.githubusercontent.com/56545525/195336288-740d53a3-13ed-448a-a451-11ad00bc9c96.png">
-
-
-
-Assignment 2 : Styling 
-> For the following project, please refer to the file screen.js
-In this project we have made use of different components such as Image, TouchableOpacity, View, Text, Vertical Scrollview and Horizontal Scrollview and added styling to them. 
-
 Output:
 
-<img width="419" alt="Screenshot 2022-10-12 at 5 26 12 PM" src="https://user-images.githubusercontent.com/56545525/195337131-32502cbf-44c9-4ba0-b690-9cb69549424b.png">
-<img width="419" alt="Screenshot 2022-10-12 at 5 26 28 PM" src="https://user-images.githubusercontent.com/56545525/195337209-b1bf8f91-36e0-427a-a6fd-9220497ec023.png">
+<img width="200" alt="Screenshot 2022-11-03 at 4 16 21 PM" src="https://user-images.githubusercontent.com/56545525/199715373-c7aef292-69a7-4a44-b5f1-bd3c460c883c.png">
+<img width="200" alt="Screenshot 2022-11-03 at 4 16 32 PM" src="https://user-images.githubusercontent.com/56545525/199715379-f3c15007-906e-4e0d-967d-b7bd155217b0.png">
+<img width="200" alt="Screenshot 2022-11-03 at 4 23 40 PM" src="https://user-images.githubusercontent.com/56545525/199715384-723b1965-07ed-4d90-bfec-847448eaae54.png">
+<img width="200" alt="Screenshot 2022-11-03 at 4 23 48 PM" src="https://user-images.githubusercontent.com/56545525/199715396-32a303ab-0299-4627-933d-ece95a361e32.png">
+<img width="200" alt="Screenshot 2022-11-03 at 4 23 59 PM" src="https://user-images.githubusercontent.com/56545525/199715407-26e9d59c-01d6-4e59-8d54-9eeb3286882c.png">
